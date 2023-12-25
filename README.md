@@ -91,7 +91,4 @@ You don't need to import Shoelace on your own code if you're not using it, but y
 ></script>
 ```
 
-## Screenshots
-
-![Light mode](./docs/Screen%20Shot%202023-12-24%20at%2019.34.27.png)
-![Dark mode](./docs/Screen%20Shot%202023-12-24%20at%2019.34.25.png)
+If the icon doen't show up, tweak your import order to make sure you have the Shoelace base path set before Theme Selector loads.
