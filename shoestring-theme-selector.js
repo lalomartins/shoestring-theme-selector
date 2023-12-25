@@ -1,11 +1,9 @@
 /**
  * @license
  * Copyright 2032 Lalo Martins
- * SPDX-License-Identifier: BSD-3-Clause
+ * SPDX-License-Identifier: MIT
  */
 import {LitElement, css, html} from 'lit';
-import '@shoelace-style/shoelace/dist/components/switch/switch.js';
-import '@shoelace-style/shoelace/dist/components/icon/icon.js';
 
 /**
  * A web component for pagination that uses Shoelace buttons for consistent UI.
@@ -26,6 +24,7 @@ import '@shoelace-style/shoelace/dist/components/icon/icon.js';
  */
 export class ThemeSelector extends LitElement {
   static properties = {
+    size: {},
     isDark: {state: true},
   };
 
@@ -34,6 +33,11 @@ export class ThemeSelector extends LitElement {
       display: block;
     }
   `;
+
+  constructor() {
+    super();
+    this.size = 'small';
+  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -44,24 +48,37 @@ export class ThemeSelector extends LitElement {
       document.documentElement.classList.contains('sl-theme-dark');
     this.origLightMode =
       document.documentElement.classList.contains('sl-theme-light');
-    document.documentElement.classList.delete('sl-theme-light');
+    document.documentElement.classList.remove('sl-theme-light');
     if (this.origDarkMode && this.origLightMode) {
+      this.isDark = this.systemDarkMode;
       if (!this.systemDarkMode)
-        document.documentElement.classList.delete('sl-theme-dark');
+        document.documentElement.classList.remove('sl-theme-dark');
     } else if (!this.origDarkMode && !this.origLightMode) {
+      this.isDark = this.systemDarkMode;
       if (this.systemDarkMode)
         document.documentElement.classList.add('sl-theme-dark');
+    } else {
+      this.isDark =
+        (this.systemDarkMode && !this.origLightMode) || this.origDarkMode;
     }
+
+    const customEvent = new CustomEvent('theme-change', {
+      bubbles: true,
+      composed: true,
+      detail: {isDark: this.isDark},
+    });
+
+    this.dispatchEvent(customEvent);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     if (this.origDarkMode)
       document.documentElement.classList.add('sl-theme-dark');
-    else document.documentElement.classList.delete('sl-theme-dark');
+    else document.documentElement.classList.remove('sl-theme-dark');
     if (this.origLightMode)
       document.documentElement.classList.add('sl-theme-light');
-    else document.documentElement.classList.delete('sl-theme-light');
+    else document.documentElement.classList.remove('sl-theme-light');
   }
 
   _updateMode(event) {
@@ -71,16 +88,27 @@ export class ThemeSelector extends LitElement {
     } else {
       document.documentElement.classList.remove('sl-theme-dark');
     }
+
+    const customEvent = new CustomEvent('theme-change', {
+      bubbles: true,
+      composed: true,
+      detail: {isDark: this.isDark},
+    });
+
+    this.dispatchEvent(customEvent);
   }
 
   render() {
     return html`<sl-switch
-      size="small"
+      size=${this.size}
       ?checked=${this.isDark}
       @sl-change=${this._updateMode}
+      aria-label="Toggle dark mode"
     >
-      <sl-icon name="moon"></sl-icon>
+      <slot>
+        <sl-icon name="moon" alt="Dark mode"></sl-icon>
+      </slot>
     </sl-switch>`;
   }
 }
-customElements.define('theme-selector', ThemeSelector);
+customElements.define('shoestring-theme-selector', ThemeSelector);

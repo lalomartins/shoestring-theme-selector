@@ -2,8 +2,8 @@
   "name": "@lalomartins/shoestring-theme-selector",
   "version": "1.0.0",
   "description": "A web component for toggling dark mode that uses Shoelace buttons for consistent UI",
-  "main": "shoestring-theme-selector.js",
-  "module": "shoestring-theme-selector.js",
+  "main": "index.js",
+  "module": "index.js",
   "type": "module",
   "scripts": {
     "build": "echo \"This is not a TypeScript project, so no need to build.\"",
