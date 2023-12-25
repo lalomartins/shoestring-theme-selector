@@ -16,16 +16,9 @@
     />
     <script
       type="module"
-      src="../node_modules/@shoelace-style/shoelace/dist/components/switch/switch.js"
+      src="../node_modules/@shoelace-style/shoelace/dist/shoelace.js"
     ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
-      rel="stylesheet"
-    />
-    <script type="module" src="../shoestring-pagination.js"></script>
-    <script type="module" src="./demo-components.js"></script>
+    <script type="module" src="../shoestring-theme-selector.js"></script>
     <style>
       body > div {
         display: flex;
@@ -36,92 +29,411 @@
 
       h1 {
         flex-grow: 1;
+        margin-bottom: 0;
+      }
+
+      .skeleton-overview header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .skeleton-overview header sl-skeleton:last-child {
+        flex: 0 0 auto;
+        width: 30%;
+      }
+
+      .skeleton-overview sl-skeleton {
+        margin-bottom: 1rem;
+      }
+
+      .skeleton-overview sl-skeleton:nth-child(1) {
+        float: left;
+        width: 3rem;
+        height: 3rem;
+        margin-right: 1rem;
+        vertical-align: middle;
+      }
+
+      .skeleton-overview sl-skeleton:nth-child(3) {
+        width: 95%;
+      }
+
+      .skeleton-overview sl-skeleton:nth-child(4) {
+        width: 80%;
       }
     </style>
   </head>
   <body>
     <div>
-      <h1>Shoestring Pagination demo</h1>
-      <div id="controls"><sl-switch>Dark mode</sl-switch></div>
-    </div>
-    <div>
-      <shoestring-pagination-demo-block
-        hide-on-single-page
-        surrounding-pages="3"
-        current="42"
-        total="813"
-      ></shoestring-pagination-demo-block>
-      <shoestring-pagination-demo-block
-        hide-on-single-page
-        surrounding-pages="3"
-        current="1"
-        total="813"
-      ></shoestring-pagination-demo-block>
-      <shoestring-pagination-demo-block
-        hide-on-single-page
-        surrounding-pages="3"
-        current="82"
-        total="813"
-      ></shoestring-pagination-demo-block>
-      <shoestring-pagination-demo-block
-        surrounding-pages="3"
-        current="42"
-        total="813"
-      ></shoestring-pagination-demo-block>
-      <shoestring-pagination-demo-block
-        surrounding-pages="3"
-        current="1"
-        total="813"
-      ></shoestring-pagination-demo-block>
-      <shoestring-pagination-demo-block
-        surrounding-pages="3"
-        current="82"
-        total="813"
-      ></shoestring-pagination-demo-block>
-      <shoestring-pagination-demo-block
-        current="42"
-        total="813"
-      ></shoestring-pagination-demo-block>
-      <shoestring-pagination-demo-block
-        current="1"
-        total="813"
-      ></shoestring-pagination-demo-block>
-      <shoestring-pagination-demo-block
-        current="82"
-        total="813"
-      ></shoestring-pagination-demo-block>
-      <shoestring-pagination-demo-block
-        hide-on-single-page
-        surrounding-pages="3"
-        current="1"
-        total="7"
-      ></shoestring-pagination-demo-block>
-      <shoestring-pagination-demo-block
-        surrounding-pages="3"
-        current="1"
-        total="7"
-      ></shoestring-pagination-demo-block>
+      <h1>Shoestring Theme Selector demo</h1>
+      <div id="controls">
+        <shoestring-theme-selector></shoestring-theme-selector>
+      </div>
     </div>
 
-    <script>
-      (function setupDarkMode() {
-        const switchEl = document.querySelector('#controls sl-switch');
-        function updateMode(isDark) {
-          if (isDark) {
-            document.documentElement.classList.add('sl-theme-dark');
-          } else {
-            document.documentElement.classList.remove('sl-theme-dark');
-          }
+    <p>
+      <sl-breadcrumb>
+        <sl-breadcrumb-item>Web</sl-breadcrumb-item>
+        <sl-breadcrumb-item>Components</sl-breadcrumb-item>
+        <sl-breadcrumb-item>Shoestring</sl-breadcrumb-item>
+        <sl-breadcrumb-item>Theme Selector</sl-breadcrumb-item>
+      </sl-breadcrumb>
+    </p>
+
+    <div>
+      <sl-card>
+        <div slot="header">Buttons</div>
+        <sl-dropdown>
+          <sl-button slot="trigger" caret>Edit</sl-button>
+          <sl-menu>
+            <sl-menu-item value="cut">Cut</sl-menu-item>
+            <sl-menu-item value="copy">Copy</sl-menu-item>
+            <sl-menu-item value="paste">Paste</sl-menu-item>
+          </sl-menu>
+        </sl-dropdown>
+
+        <p>
+          <sl-button-group label="Alignment">
+            <sl-button>Left</sl-button>
+            <sl-button>Center</sl-button>
+            <sl-button>Right</sl-button>
+          </sl-button-group>
+        </p>
+
+        <p>
+          <sl-button-group label="Alignment">
+            <sl-button variant="primary">Left</sl-button>
+            <sl-button variant="primary">Center</sl-button>
+            <sl-button variant="primary">Right</sl-button>
+          </sl-button-group>
+        </p>
+
+        <p>
+          <sl-button-group label="Alignment">
+            <sl-button variant="success">Left</sl-button>
+            <sl-button variant="success">Center</sl-button>
+            <sl-button variant="success">Right</sl-button>
+          </sl-button-group>
+        </p>
+
+        <p>
+          <sl-button-group label="Alignment">
+            <sl-button variant="neutral">Left</sl-button>
+            <sl-button variant="neutral">Center</sl-button>
+            <sl-button variant="neutral">Right</sl-button>
+          </sl-button-group>
+        </p>
+
+        <p>
+          <sl-button-group label="Alignment">
+            <sl-button variant="warning">Left</sl-button>
+            <sl-button variant="warning">Center</sl-button>
+            <sl-button variant="warning">Right</sl-button>
+          </sl-button-group>
+        </p>
+
+        <p>
+          <sl-button-group label="Alignment">
+            <sl-button variant="danger">Left</sl-button>
+            <sl-button variant="danger">Center</sl-button>
+            <sl-button variant="danger">Right</sl-button>
+          </sl-button-group>
+        </p>
+      </sl-card>
+
+      <sl-card>
+        <div slot="header">Text inputs</div>
+
+        <p>
+          <sl-input
+            label="What is your name?"
+            placeholder="Your name"
+          ></sl-input>
+        </p>
+
+        <p>
+          <sl-input
+            label="Nickname"
+            help-text="What would you like people to call you?"
+            clearable
+          ></sl-input>
+        </p>
+
+        <p>
+          <sl-input
+            type="password"
+            placeholder="Password Toggle"
+            password-toggle
+          ></sl-input>
+        </p>
+
+        <p>
+          <sl-input type="email" placeholder="Email"></sl-input>
+        </p>
+
+        <p>
+          <sl-input type="number" placeholder="Number"></sl-input>
+        </p>
+
+        <p>
+          <sl-input type="date" placeholder="Date"></sl-input>
+        </p>
+      </sl-card>
+
+      <sl-card>
+        <div slot="header">Other inputs</div>
+
+        <p>
+          <sl-select
+            label="Experience"
+            help-text="Please tell us your skill level."
+          >
+            <sl-option value="1">Novice</sl-option>
+            <sl-option value="2">Intermediate</sl-option>
+            <sl-option value="3">Advanced</sl-option>
+          </sl-select>
+        </p>
+
+        <p>
+          <sl-radio-group label="Select an option" name="a" value="1">
+            <sl-radio value="1">Option 1</sl-radio>
+            <sl-radio value="2">Option 2</sl-radio>
+            <sl-radio value="3">Option 3</sl-radio>
+          </sl-radio-group>
+        </p>
+
+        <p>
+          <sl-radio-group
+            label="Select an option"
+            help-text="Select an option that makes you proud."
+            name="a"
+            value="1"
+          >
+            <sl-radio-button value="1">Option 1</sl-radio-button>
+            <sl-radio-button value="2">Option 2</sl-radio-button>
+            <sl-radio-button value="3">Option 3</sl-radio-button>
+          </sl-radio-group>
+        </p>
+
+        <p>
+          <sl-color-picker
+            value="#f5a623ff"
+            opacity
+            label="Select a color"
+          ></sl-color-picker>
+          <sl-checkbox indeterminate>Sparkles</sl-checkbox>
+        </p>
+
+        <p>
+          <sl-tag pill removable variant="primary">Primary</sl-tag>
+          <sl-tag pill removable variant="success">Success</sl-tag>
+          <sl-tag pill removable variant="neutral">Neutral</sl-tag>
+          <sl-tag pill removable variant="warning">Warning</sl-tag>
+          <sl-tag pill removable variant="danger">Danger</sl-tag>
+        </p>
+      </sl-card>
+
+      <sl-card>
+        <div slot="header">Icons</div>
+        <p style="font-size: 23px">
+          <sl-icon name="exclamation-triangle"></sl-icon>
+          <sl-icon name="archive"></sl-icon>
+          <sl-icon name="battery-charging"></sl-icon>
+          <sl-icon name="bell"></sl-icon>
+          <sl-icon name="clock"></sl-icon>
+          <sl-icon name="cloud"></sl-icon>
+          <sl-icon name="download"></sl-icon>
+          <sl-icon name="file-earmark"></sl-icon>
+          <br />
+          <sl-icon name="flag"></sl-icon>
+          <sl-icon name="heart"></sl-icon>
+          <sl-icon name="image"></sl-icon>
+          <sl-icon name="lightning"></sl-icon>
+          <sl-icon name="mic"></sl-icon>
+          <sl-icon name="search"></sl-icon>
+          <sl-icon name="star"></sl-icon>
+          <sl-icon name="trash"></sl-icon>
+        </p>
+
+        <p style="color: var(--sl-color-primary-600)">
+          <sl-icon name="exclamation-triangle"></sl-icon>
+          <sl-icon name="archive"></sl-icon>
+          <sl-icon name="battery-charging"></sl-icon>
+          <sl-icon name="bell"></sl-icon>
+        </p>
+        <p style="color: var(--sl-color-danger-600)">
+          <sl-icon name="clock"></sl-icon>
+          <sl-icon name="cloud"></sl-icon>
+          <sl-icon name="download"></sl-icon>
+          <sl-icon name="file-earmark"></sl-icon>
+        </p>
+        <p style="color: var(--sl-color-warning-600)">
+          <sl-icon name="flag"></sl-icon>
+          <sl-icon name="heart"></sl-icon>
+          <sl-icon name="image"></sl-icon>
+          <sl-icon name="lightning"></sl-icon>
+        </p>
+        <p style="color: var(--sl-color-success-600)">
+          <sl-icon name="mic"></sl-icon>
+          <sl-icon name="search"></sl-icon>
+          <sl-icon name="star"></sl-icon>
+          <sl-icon name="trash"></sl-icon>
+        </p>
+      </sl-card>
+
+      <sl-card style="min-width: 30em">
+        <div slot="header">Progress</div>
+
+        <demo-progress-components></demo-progress-components>
+        <p><sl-progress-bar indeterminate></sl-progress-bar></p>
+        <p style="text-align: center">
+          <sl-spinner style="font-size: 3rem"></sl-spinner>
+        </p>
+      </sl-card>
+
+      <sl-card>
+        <div slot="header">Range</div>
+
+        <p>
+          <sl-range
+            label="Volume"
+            help-text="This demo has no audio."
+            min="0"
+            max="100"
+            value="30"
+          ></sl-range>
+        </p>
+
+        <p>
+          <sl-range
+            label="Volume"
+            help-text="This demo has no audio."
+            min="0"
+            max="100"
+            value="30"
+            style="
+              --track-color-active: var(--sl-color-primary-600);
+              --track-color-inactive: var(--sl-color-primary-100);
+            "
+          ></sl-range>
+        </p>
+      </sl-card>
+
+      <sl-card>
+        <div slot="header">Rating</div>
+
+        <p>
+          This demo:
+          <sl-rating label="Rating"></sl-rating>
+        </p>
+
+        <p>
+          The theme selector component:
+          <sl-rating label="Rating" precision="0.5" value="4.5"></sl-rating>
+        </p>
+
+        <p>
+          Shoelace:
+          <sl-rating label="Rating" value="5" disabled></sl-rating>
+        </p>
+      </sl-card>
+
+      <sl-card>
+        <div slot="header">Tabs</div>
+
+        <sl-tab-group>
+          <sl-tab slot="nav" panel="general">General</sl-tab>
+          <sl-tab slot="nav" panel="custom">Custom</sl-tab>
+          <sl-tab slot="nav" panel="advanced">Advanced</sl-tab>
+          <sl-tab slot="nav" panel="disabled" disabled>Disabled</sl-tab>
+
+          <sl-tab-panel name="general">
+            <div class="skeleton-overview">
+              <header>
+                <sl-skeleton></sl-skeleton>
+                <sl-skeleton></sl-skeleton>
+              </header>
+
+              <sl-skeleton></sl-skeleton>
+              <sl-skeleton></sl-skeleton>
+              <sl-skeleton></sl-skeleton>
+            </div>
+          </sl-tab-panel>
+          <sl-tab-panel name="custom">
+            <div class="skeleton-overview">
+              <header>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+              </header>
+
+              <sl-skeleton effect="sheen"></sl-skeleton>
+              <sl-skeleton effect="sheen"></sl-skeleton>
+              <sl-skeleton effect="sheen"></sl-skeleton>
+            </div>
+          </sl-tab-panel>
+          <sl-tab-panel name="advanced">
+            <div class="skeleton-overview">
+              <header>
+                <sl-skeleton effect="pulse"></sl-skeleton>
+                <sl-skeleton effect="pulse"></sl-skeleton>
+              </header>
+
+              <sl-skeleton effect="pulse"></sl-skeleton>
+              <sl-skeleton effect="pulse"></sl-skeleton>
+              <sl-skeleton effect="pulse"></sl-skeleton>
+            </div>
+          </sl-tab-panel>
+          <sl-tab-panel name="disabled"
+            >This is a disabled tab panel.</sl-tab-panel
+          >
+        </sl-tab-group>
+      </sl-card>
+    </div>
+
+    <script type="module">
+      import {LitElement, css, html} from '../node_modules/lit/index.js';
+      class ProgressDemo extends LitElement {
+        static properties = {
+          current: {
+            type: Number,
+          },
+        };
+
+        constructor() {
+          super();
+          this.current = 5;
         }
-        switchEl.addEventListener('sl-change', (event) => {
-          updateMode(event.target.checked);
-        });
-        const systemDarkMode =
-          window.matchMedia &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches;
-        switchEl.checked = systemDarkMode;
-        updateMode(systemDarkMode);
-      })();
+
+        connectedCallback() {
+          super.connectedCallback();
+          document
+            .querySelector('shoestring-theme-selector')
+            .addEventListener('theme-change', (event) => {
+              this.current =
+                (this.current + Math.floor(Math.random() * 10) + 1) % 100;
+            });
+        }
+
+        render() {
+          return html`
+            <p style="display: flex; justify-content: space-evenly">
+              <sl-progress-ring value=${this.current}></sl-progress-ring>
+
+              <sl-progress-ring value=${this.current}>
+                ${this.current}%
+              </sl-progress-ring>
+            </p>
+            <p><sl-progress-bar value=${this.current}></sl-progress-bar></p>
+            <p>
+              <sl-progress-bar value=${this.current}>
+                ${this.current}%
+              </sl-progress-bar>
+            </p>
+          `;
+        }
+      }
+      customElements.define('demo-progress-components', ProgressDemo);
     </script>
   </body>
 </html>
