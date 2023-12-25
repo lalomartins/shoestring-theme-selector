@@ -50,17 +50,15 @@ setBasePath("node_modules/@lalomartins/shoestring-theme-selector/node_modules/@s
 
 Attributes:
 
-- current - The current page
-- total - Total number of items
-- page-size (default: 10) - How many items are in a page
-- surrounding-pages (default: 2) - How many pages to display before and after current at most
-- hide-on-single-page - If set, and all items fit in one page, hide the element
+- size - Size to pass down to sl-switch
 
-If accessing props directly in JS (or Lit's `.prop=${}`), convert the names to camelCase, e.g. `pageSize`.
+Slots:
+
+If you provide contents (default slot), they will be used for the label; otherwise, `<sl-icon name="moon" alt="Dark mode"></sl-icon>`
 
 Events:
 
-- page-change - Indicates when the page changes; value is in `event.detail.page`
+- theme-change - Indicates when the theme changes; `event.detail.isDark` is true when dark mode
 
 ## Install
 
@@ -87,7 +85,7 @@ You don't need to import Shoelace on your own code if you're not using it, but y
 ></script>
 <script
   type="module"
-  src="https://cdn.jsdelivr.net/npm/@lalomartins/shoestring-theme-selector@1.0.0/cdn/shoestring-theme-selector.js"
+  src="https://cdn.jsdelivr.net/npm/@lalomartins/shoestring-theme-selector@1.0.1/cdn/shoestring-theme-selector.js"
 ></script>
 ```
 

@@ -1,6 +1,6 @@
 {
   "name": "@lalomartins/shoestring-theme-selector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A web component for toggling dark mode that uses Shoelace buttons for consistent UI",
   "main": "index.js",
   "module": "index.js",
